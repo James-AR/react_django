@@ -13,6 +13,10 @@ class Register extends Component {
     e.preventDefault();
   };
 
+  onChange = e => {
+    this.setState({ [e.target.name]: e.target.value });
+  };
+
   render() {
     const { username, email, password, password2 } = this.state;
 
