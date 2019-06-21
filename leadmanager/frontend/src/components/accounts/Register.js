@@ -11,6 +11,7 @@ class Register extends Component {
 
   onSubmit = e => {
     e.preventDefault();
+    console.log("Submit");
   };
 
   onChange = e => {
@@ -71,7 +72,7 @@ class Register extends Component {
               </button>
             </div>
             <p>
-              Already Have An Account?
+              Already have an account?
               <Link to="/login">Login</Link>
             </p>
           </form>
@@ -81,4 +82,4 @@ class Register extends Component {
   }
 }
 
-export default Login;
+export default Register;
