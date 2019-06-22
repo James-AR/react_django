@@ -16,6 +16,8 @@ class Alerts extends Component {
       if (error.msg.email) alert.error(`Email: ${error.msg.name.join()}`);
       if (error.msg.message)
         alert.error(`Message: ${error.msg.message.join()}`);
+      if (error.msg.non_field_errors)
+        alert.error(error.msg.non_field_errors.join());
     }
     if (message !== prevProps.message) {
       if (message.deleteLead) alert.success(message.deleteLead);
