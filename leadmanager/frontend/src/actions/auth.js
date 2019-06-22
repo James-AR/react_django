@@ -7,7 +7,9 @@ import {
   AUTH_ERROR,
   LOGIN_SUCCESS,
   LOGIN_FAIL,
-  LOGOUT_SUCCESS
+  LOGOUT_SUCCESS,
+  REGISTER_FAILED,
+  REGISTER_SUCCESS
 } from "./types";
 
 export const loadUser = () => (dispatch, getState) => {
@@ -54,7 +56,7 @@ export const login = (username, password) => dispatch => {
     });
 };
 
-export const register = ({ username, password, email }) => dispatch => {
+export const register = ({ email, username, password }) => dispatch => {
   const config = {
     headers: {
       "Content-Type": "application/json"
