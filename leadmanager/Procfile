@@ -1,1 +1,1 @@
-web: gunicorn react_djangogit add.wsgi
+web: gunicorn react_django.wsgi
