@@ -1,5 +1,9 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
+import { register } from "../../actions/auth";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import { createMessage } from "../../actions/messages";
 
 class Register extends Component {
   state = {
@@ -9,9 +13,19 @@ class Register extends Component {
     password2: ""
   };
 
+  static propTypes = {
+    register: PropTypes.func.isRequired,
+    isAuthenticated: PropTypes.bool
+  };
+
   onSubmit = e => {
     e.preventDefault();
-    console.log("Submit");
+    const { password, password2 } = this.state;
+    if (password !== password2) {
+      this.props.createMessage({ passwordNotMatch: "Passwords do not match" });
+    } else {
+      console.log("submit");
+    }
   };
 
   onChange = e => {
@@ -82,4 +96,11 @@ class Register extends Component {
   }
 }
 
-export default Register;
+const mapStateToProps = state => ({
+  isAuthenticated: state.auth.isAuthenticated
+});
+
+export default connect(
+  mapStateToProps,
+  { register, createMessage }
+)(Register);
